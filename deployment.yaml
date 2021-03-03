@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flaskr
+  name: flaskr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskr
+  template:
+    metadata:
+      labels:
+        app: flaskr
+    spec:
+      containers:
+      - image: docker.io/stabon/flaskr:{{CF_SHORT_REVISION}}
+        name: flaskr

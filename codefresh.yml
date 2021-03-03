@@ -31,12 +31,10 @@ steps:
       - pytest
   deploy:
     title: Deploy to K8s
-    type: deploy
+    image: codefresh/cf-deploy-kubernetes:master
     stage: deployment
-    kind: kubernetes
-    cluster: digitalOcean@k8s01demo
-    namespace: flaskr
-    service: flaskr
-    candidate:
-      image: '${{flaskr}}'
-      registry: 'flaskr'
+    commands:
+      - /cf-deploy-kubernetes deployment.yaml
+    environment:
+    - KUBECONTEXT=digitalOcean@k8s01demo
+    - KUBERNETES_NAMESPACE=flaskr
