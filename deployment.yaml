@@ -17,3 +17,37 @@ spec:
       containers:
       - image: docker.io/stabon/flaskr:{{CF_SHORT_REVISION}}
         name: flaskr
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: flaskr
+  name: flaskr
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: flaskr
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flaskr-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: flaskr.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flaskr
+            port:
+              number: 5000
