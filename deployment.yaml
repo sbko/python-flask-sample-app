@@ -41,7 +41,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: flaskr.example.com
+  - host: fr.sbko.io
     http:
       paths:
       - path: /
