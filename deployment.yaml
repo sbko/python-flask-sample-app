@@ -5,6 +5,7 @@ metadata:
     app: flaskr
   name: flaskr
 spec:
+  replicas: {{REPLICAS}}
   selector:
     matchLabels:
       app: flaskr

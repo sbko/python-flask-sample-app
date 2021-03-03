@@ -54,4 +54,4 @@ steps:
     environment:
     - KUBECONTEXT=digitalOcean@k8s01demo
     - KUBERNETES_NAMESPACE=flaskr
-    - MY_REPLICA_NUBMER=3
+    - REPLICAS=3
