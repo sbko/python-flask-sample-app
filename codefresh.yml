@@ -28,3 +28,13 @@ steps:
     commands: 
       - pip install pytest
       - pytest
+  deploy:
+    title: Deploy to K8s
+    type: deploy
+    kind: kubernetes
+    cluster: digitalOcean@k8s01demo
+    namespace: flaskr
+    service: flaskr
+    candidate:
+      image: '${{flaskr}}'
+      registry: 'dockerhub'
