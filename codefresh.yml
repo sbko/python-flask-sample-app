@@ -29,6 +29,12 @@ steps:
     commands: 
       - pip install pytest
       - pytest
+  approval:
+    title: Deploy to Prod?
+    type: pending-approval
+    stage: deployment
+    timeout:
+      finalState: denied
   deploy:
     title: Deploy to K8s
     image: codefresh/cf-deploy-kubernetes:master
