@@ -41,6 +41,16 @@ steps:
     stage: deployment
     commands:
       - /cf-deploy-kubernetes deployment.yaml
+    env:
+      name: k8s
+      endpoints:
+      - name: Flaskr
+        url: http://fr.sbko.io
+      type: kubernetes
+      change: Updated
+      filters:
+      - cluster: digitalOcean@k8s01demo
+        namespace: flaskr
     environment:
     - KUBECONTEXT=digitalOcean@k8s01demo
     - KUBERNETES_NAMESPACE=flaskr
