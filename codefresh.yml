@@ -42,7 +42,7 @@ steps:
     commands:
       - /cf-deploy-kubernetes deployment.yaml
     env:
-      name: k8s
+      name: Flaskr
       endpoints:
       - name: Flaskr
         url: http://fr.sbko.io
@@ -54,3 +54,4 @@ steps:
     environment:
     - KUBECONTEXT=digitalOcean@k8s01demo
     - KUBERNETES_NAMESPACE=flaskr
+    - MY_REPLICA_NUBMER=3
